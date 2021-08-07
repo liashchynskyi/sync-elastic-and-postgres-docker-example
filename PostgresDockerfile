@@ -1,0 +1,7 @@
+FROM postgres:13
+
+COPY ./pgsync/conf.sql /docker-entrypoint-initdb.d/
+COPY ./pgsync/populate.sql /docker-entrypoint-initdb.d/
+
+RUN chmod a+r /docker-entrypoint-initdb.d/conf.sql
+RUN chmod a+r /docker-entrypoint-initdb.d/populate.sql

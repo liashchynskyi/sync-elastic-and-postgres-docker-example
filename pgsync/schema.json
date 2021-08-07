@@ -1,0 +1,82 @@
+[
+  {
+    "database": "postgres",
+    "index": "talents",
+    "nodes": {
+      "table": "talents",
+      "schema": "public",
+      "columns": [
+        "pk_id",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+        "first_name",
+        "last_name",
+        "plaque_nickname",
+        "nickname",
+        "status",
+        "half_body_image"
+      ]
+    }
+  },
+  {
+    "database": "postgres",
+    "index": "talent_offers",
+    "nodes": {
+      "table": "talent_offers",
+      "schema": "public",
+      "columns": [
+        "pk_id",
+        "created_at",
+        "updated_at",
+        "deleted_at",
+        "type",
+        "title",
+        "price",
+        "status"
+      ],
+      "children": [
+        {
+          "table": "talents",
+          "schema": "public",
+          "columns": [
+            "pk_id",
+            "created_at",
+            "updated_at",
+            "deleted_at",
+            "first_name",
+            "last_name",
+            "plaque_nickname",
+            "nickname",
+            "status",
+            "half_body_image"
+          ],
+          "relationship": {
+            "variant": "object",
+            "type": "one_to_many",
+            "foreign_key": {
+              "child": [
+                "pk_id"
+              ],
+              "parent": [
+                "fk_talent_id"
+              ]
+            }
+          }
+        },
+        {
+          "table": "locations",
+          "schema": "public",
+          "columns": [],
+          "relationship": {
+            "variant": "object",
+            "type": "one_to_many",
+            "through_tables": [
+              "talent_offers_locations_locations"
+            ]
+          }
+        }
+      ]
+    }
+  }
+]

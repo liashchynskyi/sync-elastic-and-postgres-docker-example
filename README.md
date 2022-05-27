@@ -1,6 +1,6 @@
 # Article
 
-https://liashchynskyi.com/posts/syncing-postgresql-tables-with-elasticsearch
+https://liashchynskyi.net/posts/syncing-postgresql-tables-with-elasticsearch
 
 # Info
 
